@@ -123,19 +123,24 @@
 ;;; SHA-256 Implementation (Pure Common Lisp)
 ;;; ============================================================================
 
-(defconstant +sha256-k+
-  #(#x428a2f98 #x71374491 #xb5c0fbcf #xe9b5dba5 #x3956c25b #x59f111f1 #x923f82a4 #xab1c5ed5
-    #xd807aa98 #x12835b01 #x243185be #x550c7dc3 #x72be5d74 #x80deb1fe #x9bdc06a7 #xc19bf174
-    #xe49b69c1 #xefbe4786 #x0fc19dc6 #x240ca1cc #x2de92c6f #x4a7484aa #x5cb0a9dc #x76f988da
-    #x983e5152 #xa831c66d #xb00327c8 #xbf597fc7 #xc6e00bf3 #xd5a79147 #x06ca6351 #x14292967
-    #x27b70a85 #x2e1b2138 #x4d2c6dfc #x53380d13 #x650a7354 #x766a0abb #x81c2c92e #x92722c85
-    #xa2bfe8a1 #xa81a664b #xc24b8b70 #xc76c51a3 #xd192e819 #xd6990624 #xf40e3585 #x106aa070
-    #x19a4c116 #x1e376c08 #x2748774c #x34b0bcb5 #x391c0cb3 #x4ed8aa4a #x5b9cca4f #x682e6ff3
-    #x748f82ee #x78a5636f #x84c87814 #x8cc70208 #x90befffa #xa4506ceb #xbef9a3f7 #xc67178f2)
+;; Use defvar to avoid SBCL DEFCONSTANT-UNEQL on array constants
+(defvar +sha256-k+
+  (make-array 64 :element-type '(unsigned-byte 32)
+              :initial-contents
+              '(#x428a2f98 #x71374491 #xb5c0fbcf #xe9b5dba5 #x3956c25b #x59f111f1 #x923f82a4 #xab1c5ed5
+                #xd807aa98 #x12835b01 #x243185be #x550c7dc3 #x72be5d74 #x80deb1fe #x9bdc06a7 #xc19bf174
+                #xe49b69c1 #xefbe4786 #x0fc19dc6 #x240ca1cc #x2de92c6f #x4a7484aa #x5cb0a9dc #x76f988da
+                #x983e5152 #xa831c66d #xb00327c8 #xbf597fc7 #xc6e00bf3 #xd5a79147 #x06ca6351 #x14292967
+                #x27b70a85 #x2e1b2138 #x4d2c6dfc #x53380d13 #x650a7354 #x766a0abb #x81c2c92e #x92722c85
+                #xa2bfe8a1 #xa81a664b #xc24b8b70 #xc76c51a3 #xd192e819 #xd6990624 #xf40e3585 #x106aa070
+                #x19a4c116 #x1e376c08 #x2748774c #x34b0bcb5 #x391c0cb3 #x4ed8aa4a #x5b9cca4f #x682e6ff3
+                #x748f82ee #x78a5636f #x84c87814 #x8cc70208 #x90befffa #xa4506ceb #xbef9a3f7 #xc67178f2))
   "SHA-256 round constants.")
 
-(defconstant +sha256-h0+
-  #(#x6a09e667 #xbb67ae85 #x3c6ef372 #xa54ff53a #x510e527f #x9b05688c #x1f83d9ab #x5be0cd19)
+(defvar +sha256-h0+
+  (make-array 8 :element-type '(unsigned-byte 32)
+              :initial-contents
+              '(#x6a09e667 #xbb67ae85 #x3c6ef372 #xa54ff53a #x510e527f #x9b05688c #x1f83d9ab #x5be0cd19))
   "SHA-256 initial hash values.")
 
 (declaim (inline sha256-rotr sha256-shr sha256-ch sha256-maj sha256-sigma0 sha256-sigma1 sha256-s0 sha256-s1))
@@ -254,7 +259,8 @@
   (let* ((padded (sha256-pad-message (if (stringp message)
                                           (map '(vector (unsigned-byte 8)) #'char-code message)
                                           message)))
-         (h (copy-seq +sha256-h0+))
+         (h (make-array 8 :element-type '(unsigned-byte 32)
+                         :initial-contents (coerce +sha256-h0+ 'list)))
          (n-blocks (/ (length padded) 64)))
     (dotimes (i n-blocks)
       (let ((block (make-array 64 :element-type '(unsigned-byte 8))))
