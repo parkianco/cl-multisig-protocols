@@ -1,3 +1,6 @@
+;;;; Copyright (c) 2024-2026 Parkian Company LLC. All rights reserved.
+;;;; SPDX-License-Identifier: BSD-3-Clause
+
 ;;;; coordinator.lisp - Signing Coordinator for multi-party signing sessions
 ;;;; Manages session state and aggregates signatures from participants
 

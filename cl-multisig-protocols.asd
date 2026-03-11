@@ -20,7 +20,7 @@
 (asdf:defsystem #:cl-multisig-protocols
   :name "cl-multisig-protocols"
   :version "1.0.0"
-  :author "CLPIC Contributors"
+  :author "Parkian Company LLC"
   :license "MIT"
   :description "Threshold multi-signature protocols (MuSig2, FROST) for Common Lisp"
   :long-description "A standalone implementation of MuSig2 and FROST threshold signature protocols with inlined secp256k1 and Schnorr primitives. Suitable for cryptocurrency wallets and distributed signing applications."

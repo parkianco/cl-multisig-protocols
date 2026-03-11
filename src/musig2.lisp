@@ -1,3 +1,6 @@
+;;;; Copyright (c) 2024-2026 Parkian Company LLC. All rights reserved.
+;;;; SPDX-License-Identifier: BSD-3-Clause
+
 ;;;; musig2.lisp - MuSig2 Protocol Implementation (BIP327)
 ;;;; N-of-N multi-party Schnorr signatures
 
