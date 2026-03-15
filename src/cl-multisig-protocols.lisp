@@ -111,3 +111,38 @@
 (define-condition signature-verification-error (cl-multisig-protocols-error) ())
 (define-condition nonce-reuse-error (cl-multisig-protocols-error) ())
 (defun run-all-tests (&rest args) "Auto-generated substantive API for run-all-tests" (declare (ignore args)) t)
+
+
+;;; ============================================================================
+;;; Standard Toolkit for cl-multisig-protocols
+;;; ============================================================================
+
+(defmacro with-multisig-protocols-timing (&body body)
+  "Executes BODY and logs the execution time specific to cl-multisig-protocols."
+  (let ((start (gensym))
+        (end (gensym)))
+    `(let ((,start (get-internal-real-time)))
+       (multiple-value-prog1
+           (progn ,@body)
+         (let ((,end (get-internal-real-time)))
+           (format t "~&[cl-multisig-protocols] Execution time: ~A ms~%"
+                   (/ (* (- ,end ,start) 1000.0) internal-time-units-per-second)))))))
+
+(defun multisig-protocols-batch-process (items processor-fn)
+  "Applies PROCESSOR-FN to each item in ITEMS, handling errors resiliently.
+Returns (values processed-results error-alist)."
+  (let ((results nil)
+        (errors nil))
+    (dolist (item items)
+      (handler-case
+          (push (funcall processor-fn item) results)
+        (error (e)
+          (push (cons item e) errors))))
+    (values (nreverse results) (nreverse errors))))
+
+(defun multisig-protocols-health-check ()
+  "Performs a basic health check for the cl-multisig-protocols module."
+  (let ((ctx (initialize-multisig-protocols)))
+    (if (validate-multisig-protocols ctx)
+        :healthy
+        :degraded)))

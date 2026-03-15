@@ -13,7 +13,9 @@
   ;; secp256k1 Constants and Parameters
   ;; ============================================================================
   (:export
-   #:+secp256k1-p+
+   #:with-multisig-protocols-timing
+   #:multisig-protocols-batch-process
+   #:multisig-protocols-health-check#:+secp256k1-p+
    #:+secp256k1-n+
    #:+secp256k1-gx+
    #:+secp256k1-gy+
@@ -24,7 +26,9 @@
   ;; Utility Functions
   ;; ============================================================================
   (:export
-   #:bytes-to-integer
+   #:with-multisig-protocols-timing
+   #:multisig-protocols-batch-process
+   #:multisig-protocols-health-check#:bytes-to-integer
    #:integer-to-bytes
    #:get-random-bytes
    #:sha256
@@ -37,7 +41,9 @@
   ;; Schnorr Signatures (BIP340)
   ;; ============================================================================
   (:export
-   #:schnorr-sign
+   #:with-multisig-protocols-timing
+   #:multisig-protocols-batch-process
+   #:multisig-protocols-health-check#:schnorr-sign
    #:schnorr-verify
    #:schnorr-pubkey-from-privkey
    #:lift-x)
@@ -46,7 +52,9 @@
   ;; MuSig2 Protocol (BIP327)
   ;; ============================================================================
   (:export
-   ;; Key aggregation
+   #:with-multisig-protocols-timing
+   #:multisig-protocols-batch-process
+   #:multisig-protocols-health-check;; Key aggregation
    #:musig2-key-agg-context
    #:make-musig2-key-agg-context
    #:musig2-key-agg
@@ -77,7 +85,9 @@
   ;; FROST Protocol (IETF Draft)
   ;; ============================================================================
   (:export
-   ;; Ciphersuites
+   #:with-multisig-protocols-timing
+   #:multisig-protocols-batch-process
+   #:multisig-protocols-health-check;; Ciphersuites
    #:frost-ciphersuite
    #:+frost-secp256k1-sha256+
    #:*frost-ciphersuite*
@@ -114,7 +124,9 @@
   ;; Signing Coordinator
   ;; ============================================================================
   (:export
-   #:signing-coordinator
+   #:with-multisig-protocols-timing
+   #:multisig-protocols-batch-process
+   #:multisig-protocols-health-check#:signing-coordinator
    #:make-signing-coordinator
    #:coordinator-add-participant
    #:coordinator-remove-participant
@@ -128,7 +140,9 @@
   ;; Signing Participant
   ;; ============================================================================
   (:export
-   #:signing-participant
+   #:with-multisig-protocols-timing
+   #:multisig-protocols-batch-process
+   #:multisig-protocols-health-check#:signing-participant
    #:make-signing-participant
    #:participant-keypair
    #:participant-generate-commitment
@@ -140,7 +154,9 @@
   ;; High-Level Multisig Interface
   ;; ============================================================================
   (:export
-   ;; Wallet types
+   #:with-multisig-protocols-timing
+   #:multisig-protocols-batch-process
+   #:multisig-protocols-health-check;; Wallet types
    #:multisig-wallet
    #:make-multisig-wallet
    #:multisig-wallet-type
@@ -164,4 +180,7 @@
 
 (defpackage #:cl-multisig-protocols.test
   (:use #:cl #:cl-multisig-protocols)
-  (:export #:run-all-tests))
+  (:export
+   #:with-multisig-protocols-timing
+   #:multisig-protocols-batch-process
+   #:multisig-protocols-health-check#:run-all-tests))
