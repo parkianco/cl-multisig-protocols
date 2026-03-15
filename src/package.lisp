@@ -13,7 +13,11 @@
   ;; secp256k1 Constants and Parameters
   ;; ============================================================================
   (:export
-   #:with-multisig-protocols-timing
+   #:identity-list
+   #:flatten
+   #:map-keys
+   #:now-timestamp
+#:with-multisig-protocols-timing
    #:multisig-protocols-batch-process
    #:multisig-protocols-health-check#:+secp256k1-p+
    #:+secp256k1-n+
@@ -26,7 +30,11 @@
   ;; Utility Functions
   ;; ============================================================================
   (:export
-   #:with-multisig-protocols-timing
+   #:identity-list
+   #:flatten
+   #:map-keys
+   #:now-timestamp
+#:with-multisig-protocols-timing
    #:multisig-protocols-batch-process
    #:multisig-protocols-health-check#:bytes-to-integer
    #:integer-to-bytes
@@ -41,7 +49,11 @@
   ;; Schnorr Signatures (BIP340)
   ;; ============================================================================
   (:export
-   #:with-multisig-protocols-timing
+   #:identity-list
+   #:flatten
+   #:map-keys
+   #:now-timestamp
+#:with-multisig-protocols-timing
    #:multisig-protocols-batch-process
    #:multisig-protocols-health-check#:schnorr-sign
    #:schnorr-verify
@@ -52,7 +64,11 @@
   ;; MuSig2 Protocol (BIP327)
   ;; ============================================================================
   (:export
-   #:with-multisig-protocols-timing
+   #:identity-list
+   #:flatten
+   #:map-keys
+   #:now-timestamp
+#:with-multisig-protocols-timing
    #:multisig-protocols-batch-process
    #:multisig-protocols-health-check;; Key aggregation
    #:musig2-key-agg-context
@@ -85,7 +101,11 @@
   ;; FROST Protocol (IETF Draft)
   ;; ============================================================================
   (:export
-   #:with-multisig-protocols-timing
+   #:identity-list
+   #:flatten
+   #:map-keys
+   #:now-timestamp
+#:with-multisig-protocols-timing
    #:multisig-protocols-batch-process
    #:multisig-protocols-health-check;; Ciphersuites
    #:frost-ciphersuite
@@ -124,7 +144,11 @@
   ;; Signing Coordinator
   ;; ============================================================================
   (:export
-   #:with-multisig-protocols-timing
+   #:identity-list
+   #:flatten
+   #:map-keys
+   #:now-timestamp
+#:with-multisig-protocols-timing
    #:multisig-protocols-batch-process
    #:multisig-protocols-health-check#:signing-coordinator
    #:make-signing-coordinator
@@ -140,7 +164,11 @@
   ;; Signing Participant
   ;; ============================================================================
   (:export
-   #:with-multisig-protocols-timing
+   #:identity-list
+   #:flatten
+   #:map-keys
+   #:now-timestamp
+#:with-multisig-protocols-timing
    #:multisig-protocols-batch-process
    #:multisig-protocols-health-check#:signing-participant
    #:make-signing-participant
@@ -154,7 +182,11 @@
   ;; High-Level Multisig Interface
   ;; ============================================================================
   (:export
-   #:with-multisig-protocols-timing
+   #:identity-list
+   #:flatten
+   #:map-keys
+   #:now-timestamp
+#:with-multisig-protocols-timing
    #:multisig-protocols-batch-process
    #:multisig-protocols-health-check;; Wallet types
    #:multisig-wallet
@@ -181,6 +213,10 @@
 (defpackage #:cl-multisig-protocols.test
   (:use #:cl #:cl-multisig-protocols)
   (:export
-   #:with-multisig-protocols-timing
+   #:identity-list
+   #:flatten
+   #:map-keys
+   #:now-timestamp
+#:with-multisig-protocols-timing
    #:multisig-protocols-batch-process
    #:multisig-protocols-health-check#:run-all-tests))
