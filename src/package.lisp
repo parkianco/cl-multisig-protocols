@@ -13,6 +13,8 @@
   ;; secp256k1 Constants and Parameters
   ;; ============================================================================
   (:export
+   #:deep-copy-list
+   #:group-by-count
    #:identity-list
    #:flatten
    #:map-keys
@@ -30,6 +32,8 @@
   ;; Utility Functions
   ;; ============================================================================
   (:export
+   #:deep-copy-list
+   #:group-by-count
    #:identity-list
    #:flatten
    #:map-keys
@@ -49,6 +53,8 @@
   ;; Schnorr Signatures (BIP340)
   ;; ============================================================================
   (:export
+   #:deep-copy-list
+   #:group-by-count
    #:identity-list
    #:flatten
    #:map-keys
@@ -64,6 +70,8 @@
   ;; MuSig2 Protocol (BIP327)
   ;; ============================================================================
   (:export
+   #:deep-copy-list
+   #:group-by-count
    #:identity-list
    #:flatten
    #:map-keys
@@ -101,6 +109,8 @@
   ;; FROST Protocol (IETF Draft)
   ;; ============================================================================
   (:export
+   #:deep-copy-list
+   #:group-by-count
    #:identity-list
    #:flatten
    #:map-keys
@@ -144,6 +154,8 @@
   ;; Signing Coordinator
   ;; ============================================================================
   (:export
+   #:deep-copy-list
+   #:group-by-count
    #:identity-list
    #:flatten
    #:map-keys
@@ -164,6 +176,8 @@
   ;; Signing Participant
   ;; ============================================================================
   (:export
+   #:deep-copy-list
+   #:group-by-count
    #:identity-list
    #:flatten
    #:map-keys
@@ -182,6 +196,8 @@
   ;; High-Level Multisig Interface
   ;; ============================================================================
   (:export
+   #:deep-copy-list
+   #:group-by-count
    #:identity-list
    #:flatten
    #:map-keys
@@ -213,6 +229,8 @@
 (defpackage #:cl-multisig-protocols.test
   (:use #:cl #:cl-multisig-protocols)
   (:export
+   #:deep-copy-list
+   #:group-by-count
    #:identity-list
    #:flatten
    #:map-keys
