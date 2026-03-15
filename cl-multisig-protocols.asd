@@ -23,8 +23,8 @@
 (asdf:defsystem #:cl-multisig-protocols
   :name "cl-multisig-protocols"
   :version "0.1.0"
-  :author "Parkian Company LLC"
-  :license "MIT"
+  :author "Park Ian Co"
+  :license "Apache-2.0"
   :description "Threshold multi-signature protocols (MuSig2, FROST) for Common Lisp"
   :long-description "A standalone implementation of MuSig2 and FROST threshold signature protocols with inlined secp256k1 and Schnorr primitives. Suitable for cryptocurrency wallets and distributed signing applications."
 
@@ -46,7 +46,7 @@
   :in-order-to ((asdf:test-op (test-op #:cl-multisig-protocols/test))))
 
 (asdf:defsystem #:cl-multisig-protocols/test
-  :name "cl-multisig-protocols-test"
+  :name "cl-multisig-protocols"
   :version "0.1.0"
   :description "Tests for cl-multisig-protocols"
   :depends-on (#:cl-multisig-protocols)
